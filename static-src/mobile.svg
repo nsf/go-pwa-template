@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Generic mobile app screenshot placeholder">
+  <title>Mobile app placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f7"/>
+      <stop offset="1" stop-color="#dfe6ef"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="screen">
+      <rect x="12" y="12" width="366" height="820" rx="40"/>
+    </clipPath>
+    <clipPath id="heroClip">
+      <rect x="24" y="168" width="342" height="132" rx="16"/>
+    </clipPath>
+    <filter id="card" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- device body -->
+  <rect width="390" height="844" rx="46" fill="url(#bg)"/>
+  <rect x="12" y="12" width="366" height="820" rx="40" fill="#ffffff"/>
+  <rect x="12.5" y="12.5" width="365" height="819" rx="39.5" fill="none" stroke="#cbd5e1"/>
+
+  <g clip-path="url(#screen)">
+    <!-- status bar -->
+    <text x="40" y="42" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13" font-weight="600" fill="#334155">9:41</text>
+    <g fill="#334155">
+      <rect x="300" y="33" width="3" height="7" rx="1"/>
+      <rect x="306" y="30" width="3" height="10" rx="1"/>
+      <rect x="312" y="27" width="3" height="13" rx="1"/>
+      <rect x="318" y="25" width="3" height="15" rx="1"/>
+      <rect x="328" y="27" width="18" height="12" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+      <rect x="330" y="29" width="11" height="8" rx="1.5"/>
+      <rect x="347" y="31" width="2" height="4" rx="1"/>
+    </g>
+
+    <!-- header -->
+    <text x="24" y="88" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Dashboard</text>
+    <circle cx="342" cy="80" r="16" fill="#e2e8f0"/>
+    <circle cx="342" cy="75" r="5" fill="#94a3b8"/>
+    <path d="M331 90c3-6 19-6 22 0" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- search bar -->
+    <rect x="24" y="108" width="342" height="40" rx="12" fill="#f1f5f9" stroke="#e2e8f0"/>
+    <circle cx="46" cy="128" r="7" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <line x1="51" y1="133" x2="56" y2="138" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+    <rect x="66" y="124" width="110" height="8" rx="4" fill="#cbd5e1"/>
+
+    <!-- hero card with sparkline -->
+    <g filter="url(#card)">
+      <rect x="24" y="168" width="342" height="132" rx="16" fill="url(#hero)"/>
+    </g>
+    <rect x="40" y="188" width="72" height="8" rx="4" fill="#ffffff" opacity="0.75"/>
+    <rect x="40" y="208" width="112" height="16" rx="6" fill="#ffffff"/>
+    <g clip-path="url(#heroClip)">
+      <path d="M220 248c18-22 30 8 46-14s24 12 44-14V300h-90z" fill="url(#spark)"/>
+      <path d="M220 248c18-22 30 8 46-14s24 12 44-14" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    </g>
+    <rect x="40" y="248" width="60" height="20" rx="10" fill="#ffffff" opacity="0.25"/>
+    <rect x="50" y="255" width="40" height="6" rx="3" fill="#ffffff" opacity="0.9"/>
+
+    <!-- section label -->
+    <rect x="24" y="324" width="96" height="10" rx="5" fill="#94a3b8"/>
+    <rect x="322" y="324" width="44" height="10" rx="5" fill="#cbd5e1"/>
+
+    <!-- list rows -->
+    <g filter="url(#card)">
+      <rect x="24" y="348" width="342" height="72" rx="14" fill="#ffffff"/>
+      <rect x="24" y="432" width="342" height="72" rx="14" fill="#ffffff"/>
+      <rect x="24" y="516" width="342" height="72" rx="14" fill="#ffffff"/>
+    </g>
+    <g>
+      <rect x="40" y="364" width="40" height="40" rx="12" fill="#e0e7ff"/>
+      <rect x="96" y="368" width="150" height="10" rx="5" fill="#475569"/>
+      <rect x="96" y="388" width="200" height="8" rx="4" fill="#cbd5e1"/>
+      <rect x="40" y="448" width="40" height="40" rx="12" fill="#dcfce7"/>
+      <rect x="96" y="452" width="120" height="10" rx="5" fill="#475569"/>
+      <rect x="96" y="472" width="176" height="8" rx="4" fill="#cbd5e1"/>
+      <rect x="40" y="532" width="40" height="40" rx="12" fill="#fef3c7"/>
+      <rect x="96" y="536" width="164" height="10" rx="5" fill="#475569"/>
+      <rect x="96" y="556" width="140" height="8" rx="4" fill="#cbd5e1"/>
+    </g>
+
+    <!-- two stat tiles -->
+    <g filter="url(#card)">
+      <rect x="24" y="608" width="165" height="96" rx="14" fill="#ffffff"/>
+      <rect x="201" y="608" width="165" height="96" rx="14" fill="#ffffff"/>
+    </g>
+    <rect x="40" y="624" width="60" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="40" y="644" width="72" height="16" rx="6" fill="#334155"/>
+    <rect x="40" y="676" width="133" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="217" y="624" width="52" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="217" y="644" width="64" height="16" rx="6" fill="#334155"/>
+    <rect x="217" y="676" width="133" height="8" rx="4" fill="#e2e8f0"/>
+
+    <!-- floating action button -->
+    <circle cx="330" cy="736" r="26" fill="#4f46e5"/>
+    <g stroke="#ffffff" stroke-width="3" stroke-linecap="round">
+      <line x1="330" y1="724" x2="330" y2="748"/>
+      <line x1="318" y1="736" x2="342" y2="736"/>
+    </g>
+
+    <!-- bottom tab bar -->
+    <rect x="12" y="768" width="366" height="64" fill="#ffffff"/>
+    <line x1="12" y1="768" x2="378" y2="768" stroke="#e2e8f0"/>
+    <g fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M52 796l10-9 10 9v12a2 2 0 0 1-2 2h-16a2 2 0 0 1-2-2z"/>
+    </g>
+    <g fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="146" cy="798" r="8"/>
+      <line x1="152" y1="804" x2="158" y2="810"/>
+      <rect x="228" y="790" width="20" height="20" rx="4"/>
+      <path d="M314 790h20M314 799h20M314 808h13"/>
+    </g>
+    <rect x="163" y="820" width="64" height="5" rx="2.5" fill="#0f172a" opacity="0.8"/>
+  </g>
+
+  <!-- notch / dynamic island -->
+  <rect x="157" y="24" width="76" height="22" rx="11" fill="#0f172a"/>
+</svg>

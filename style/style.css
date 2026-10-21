@@ -1,0 +1,15 @@
+@import "tailwindcss" source(none);
+@plugin "./daisyui.mjs" {
+  themes: corporate --default, business --prefersdark;
+}
+@plugin "./daisyui-theme.mjs" {
+  name: "corporate";
+  default: true;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+}
+@source "../tpl/*.templ";
+@custom-variant standalone (@media (display-mode: standalone));
+@custom-variant fullscreen (@media (display-mode: fullscreen));

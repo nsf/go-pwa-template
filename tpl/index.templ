@@ -1,0 +1,40 @@
+package tpl
+
+templ head(title string) {
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>{ title }</title>
+		<link rel="stylesheet" href="/static/style.css"/>
+		<script type="module" src="/static/datastar.js"></script>
+		<link rel="manifest" href="/static/manifest.json"/>
+		<meta name="theme-color" content="#202020"/>
+	</head>
+}
+
+templ layout(title string) {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head(title)
+		<body>
+			<div class="h-dvh standalone:h-svh fullscreen:h-svh flex justify-center">
+				<div class="w-full max-w-xl">
+					{ children... }
+				</div>
+			</div>
+		</body>
+	</html>
+}
+
+//--------------------------------------------------------------------------------------
+templ IndexContent(text string) {
+  <div id="index-page" data-init="@get('/updates')" class="p-2 flex flex-col gap-2 h-full">
+    {text}
+  </div>
+}
+
+templ Index(text string) {
+	@layout("My Application") {
+		@IndexContent(text)
+	}
+}
