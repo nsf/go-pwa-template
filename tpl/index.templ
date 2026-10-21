@@ -28,9 +28,9 @@ templ layout(title string) {
 
 //--------------------------------------------------------------------------------------
 templ IndexContent(text string) {
-  <div id="index-page" data-init="@get('/updates')" class="p-2 flex flex-col gap-2 h-full">
-    {text}
-  </div>
+	<div id="index-page" data-init="@get('/updates')" class="p-2 flex flex-col gap-2 h-full">
+		<div class="flex justify-center">{ text }</div>
+	</div>
 }
 
 templ Index(text string) {
