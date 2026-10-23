@@ -1,11 +1,11 @@
 {
   "id": "28fab171-f01d-4cd8-8c75-ebc95020ac44",
-  "short_name": "My App",
-  "name": "My Application",
+  "short_name": "{{ .ShortName }}",
+  "name": "{{ .LongName }}",
   "start_url": "/",
   "display": "minimal-ui",
-  "theme_color": "#202020",
-  "background_color": "#202020",
+  "theme_color": "{{ .ThemeColor }}",
+  "background_color": "{{ .ThemeColor }}",
   "screenshots": [
     {
       "src": "screenshots/desktop.png",

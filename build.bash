@@ -2,6 +2,8 @@
 
 set -e
 
+mkdir -p static
+
 if [ ! -d "static/icons" ]; then
   mkdir -p static/icons
   sizes=(48 72 96 128 144 152 192 256 384 512)
@@ -16,6 +18,11 @@ if [ ! -d "static/screenshots" ]; then
   magick convert static-src/mobile.svg static/screenshots/mobile.png
 fi
 
-tailwindcss --input style/style.css --output static/style.css --minify
+gott -f static-src/manifest.json.tpl -o static/manifest.json \
+  -d "ShortName=My App" \
+  -d "LongName=My Application" \
+  -d "ThemeColor=#202020"
+cp static-src/datastar.js static/datastar.js
+tailwindcss --input static-src/style.css --output static/style.css --minify
 templ generate
 go build
