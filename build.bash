@@ -25,4 +25,4 @@ gott -f static-src/manifest.json.tpl -o static/manifest.json \
 cp static-src/datastar.js static/datastar.js
 tailwindcss --input static-src/style.css --output static/style.css --minify
 templ generate
-go build
+go build -o bin/my-application
