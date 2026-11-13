@@ -115,13 +115,11 @@ func main() {
 	mux.HandleFunc("GET /", server.serveIndexTemplate)
 	mux.HandleFunc("GET /updates", server.updates)
 
-	var wg sync.WaitGroup
-	wg.Add(1)
-
 	httpServer := http.Server{Addr: cmd.Addr, Handler: mux}
 	httpServer.RegisterOnShutdown(httpServerShutdownCtxCancel)
 
-	go func() {
+	var httpServerWG sync.WaitGroup
+	httpServerWG.Go(func() {
 		slog.Info("listen and serve", "addr", cmd.Addr)
 		if err := httpServer.ListenAndServe(); err != nil {
 			if err != http.ErrServerClosed {
@@ -130,8 +128,7 @@ func main() {
 			}
 		}
 		slog.Info("http server stopped")
-		wg.Done()
-	}()
+	})
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
@@ -144,6 +141,8 @@ func main() {
 	if err := httpServer.Shutdown(ctx); err != nil {
 		slog.Error("unexpected error shutting down server", "error", err)
 	}
+	httpServerWG.Wait()
+	slog.Info("http server stopped")
 
-	wg.Wait()
+	slog.Info("graceful shutdown complete")
 }
