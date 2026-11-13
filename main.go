@@ -33,10 +33,10 @@ func renderTemplate[T any](f func(arg T) templ.Component, arg T) []byte {
 }
 
 type appServer struct {
-	est      EventStreamTerminator
-	lock     sync.Mutex
-	views    int
-	sessions map[string]*session
+	httpServerShutdownCtx context.Context
+	lock                  sync.Mutex
+	views                 int
+	sessions              map[string]*session
 }
 
 func (s *appServer) startSession(callback func()) *session {
@@ -83,7 +83,7 @@ func (s *appServer) updates(w http.ResponseWriter, r *http.Request) {
 
 	select {
 	case <-sse.Context().Done():
-	case <-s.est:
+	case <-s.httpServerShutdownCtx.Done():
 	}
 }
 
@@ -95,17 +95,8 @@ type Command struct {
 	Addr      string     `default:"127.0.0.1:8000" help:"address to listen on for http connections"`
 }
 
-type EventStreamTerminator chan struct{}
-
-func NewEventStreamTerminator() EventStreamTerminator {
-	return make(EventStreamTerminator)
-}
-
-func (v EventStreamTerminator) Terminate() {
-	close(v)
-}
-
 func main() {
+	httpServerShutdownCtx, httpServerShutdownCtxCancel := context.WithCancel(context.Background())
 	ctx := context.Background()
 
 	var cmd Command
@@ -114,10 +105,9 @@ func main() {
 	slog.SetLogLoggerLevel(cmd.SlogLevel)
 	slog.Info("slog level", "level", cmd.SlogLevel)
 
-	est := NewEventStreamTerminator()
 	server := &appServer{
-		est:      est,
-		sessions: map[string]*session{},
+		httpServerShutdownCtx: httpServerShutdownCtx,
+		sessions:              map[string]*session{},
 	}
 
 	mux := http.NewServeMux()
@@ -129,9 +119,7 @@ func main() {
 	wg.Add(1)
 
 	httpServer := http.Server{Addr: cmd.Addr, Handler: mux}
-	httpServer.RegisterOnShutdown(func() {
-		est.Terminate()
-	})
+	httpServer.RegisterOnShutdown(httpServerShutdownCtxCancel)
 
 	go func() {
 		slog.Info("listen and serve", "addr", cmd.Addr)
