@@ -1,5 +1,10 @@
 package tpl
 
+import (
+	"github.com/nsf/go-pwa-template/tea"
+	"github.com/starfederation/datastar-go/datastar"
+)
+
 templ head(title string) {
 	<head>
 		<meta charset="UTF-8"/>
@@ -27,14 +32,25 @@ templ layout(title string) {
 }
 
 //--------------------------------------------------------------------------------------
-templ IndexContent(text string) {
+templ IndexContent(model tea.Model) {
+	{{ sess := tea.SessionFromContextMust(ctx) }}
 	<div id="index-page" data-init="@get('/updates')" class="p-2 flex flex-col gap-2 h-full">
-		<div class="flex justify-center">{ text }</div>
+		<div class="flex justify-center">
+			Open this page in multiple windows
+		</div>
+		<div class="flex gap-2 justify-center">
+			<button type="button" class="btn btn-primary" data-on:click={ datastar.PostSSE("/button") }>
+				Shared Button { model.NumPresses }
+			</button>
+			<button type="button" class="btn btn-primary" data-on:click={ datastar.PostSSE("/session/button") }>
+				Session Button { sess.NumPresses }
+			</button>
+		</div>
 	</div>
 }
 
-templ Index(text string) {
+templ Index(model tea.Model) {
 	@layout("My Application") {
-		@IndexContent(text)
+		@IndexContent(model)
 	}
 }
