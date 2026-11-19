@@ -2,6 +2,6 @@
 @plugin "./daisyui.mjs" {
   themes: corporate --default, business --prefersdark;
 }
-@source "../tpl/*.templ";
+@source "../internal/tpl/*.templ";
 @custom-variant standalone (@media (display-mode: standalone));
 @custom-variant fullscreen (@media (display-mode: fullscreen));
